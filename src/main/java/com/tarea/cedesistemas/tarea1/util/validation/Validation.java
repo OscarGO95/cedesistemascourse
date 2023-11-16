@@ -12,11 +12,11 @@ import reactor.core.publisher.Mono;
 
 @Component
 @AllArgsConstructor
-public class Validation <T>{
+public class Validation {
 
     Validator validator;
 
-    public Mono<T> validate(Class<T> clazz, ServerRequest request){
+    public <T> Mono<T> validate(Class<T> clazz, ServerRequest request){
         return request.bodyToMono(clazz)
                 .switchIfEmpty(Mono.empty())
                 .flatMap(body -> {

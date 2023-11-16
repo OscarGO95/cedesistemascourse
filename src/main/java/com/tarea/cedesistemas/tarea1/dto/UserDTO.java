@@ -3,12 +3,14 @@ package com.tarea.cedesistemas.tarea1.dto;
 import jakarta.validation.constraints.*;
 
 public record UserDTO(
+        @Pattern(regexp = "^[0-9a-fA-F]{8}\\b-[0-9a-fA-F]{4}\\b-[0-9a-fA-F]{4}\\b-[0-9a-fA-F]{4}\\b-[0-9a-fA-F]{12}$")
+        String userId,
         @NotNull
         @NotBlank
         String documentType,
         @NotNull
         @Min(5)
-        Integer documentNumber,
+        Long documentNumber,
         @NotNull
         @NotBlank
         String name,
@@ -17,8 +19,5 @@ public record UserDTO(
         String lastname,
         @NotNull
         @Pattern(regexp = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$", message = "The email doesn't comply with a valid format")
-        String email,
-        @NotNull
-        @Pattern(regexp = "^(S|P)$", message = "Role should be 'S' o 'P'")
-        String role
+        String email
 ){}

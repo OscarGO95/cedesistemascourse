@@ -5,5 +5,32 @@ management:
         include: "*"
 
 spring:
+  datasource:
+    url: "r2dbc:h2:mem:testdb"
+    driver-class-name: org.h2.Driver
   webflux:
     base-path: "test"
+  h2:
+    console:
+      enabled: true
+  data:
+    r2dbc:
+      repositories:
+        enabled: true
+  r2dbc:
+    url: "r2dbc:h2:mem:///testdb?options=DB_CLOSE_DELAY=-1;"
+    username: sa
+    password: password
+    generate-unique-name: true
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    generate-ddl: true
+
+logging:
+  level:
+    org:
+      springframework:
+        data:
+          r2dbc: debug
+
