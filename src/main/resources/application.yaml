@@ -33,4 +33,3 @@ logging:
       springframework:
         data:
           r2dbc: debug
-

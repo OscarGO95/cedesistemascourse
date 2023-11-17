@@ -10,7 +10,6 @@ import java.util.UUID;
 @AllArgsConstructor
 @Table("users")
 public class User {
-
     private UUID userId;
     private String documentType;
     private Long documentNumber;
