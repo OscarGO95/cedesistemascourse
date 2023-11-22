@@ -14,8 +14,8 @@ public class UserService {
 
     UserRepository userRepository;
 
-    public Mono<User> findById(String id){
-        return userRepository.findById(UUID.randomUUID());
+    public Mono<User> findById(Integer id){
+        return userRepository.findById(id);
     }
 
 }

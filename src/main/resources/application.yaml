@@ -18,7 +18,7 @@ spring:
       repositories:
         enabled: true
   r2dbc:
-    url: "r2dbc:h2:mem:///testdb?options=DB_CLOSE_DELAY=-1;"
+    url: "r2dbc:h2:mem:///testdb"
     username: sa
     password: password
     generate-unique-name: true

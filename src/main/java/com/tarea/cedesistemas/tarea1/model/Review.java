@@ -2,6 +2,9 @@ package com.tarea.cedesistemas.tarea1.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.MappedCollection;
 import org.springframework.data.relational.core.mapping.Table;
 
 import java.util.UUID;
@@ -10,9 +13,13 @@ import java.util.UUID;
 @AllArgsConstructor
 @Table("review")
 public class Review {
-    private UUID reviewId;
+    @Id
+    private Integer reviewId;
     private String text;
     private Double score;
-    private UUID user;
-    private UUID book;
+    @MappedCollection(idColumn = "userId")
+    @Column("USER_ID")
+    private User user;
+    @MappedCollection(idColumn = "bookId")
+    private Book book;
 }

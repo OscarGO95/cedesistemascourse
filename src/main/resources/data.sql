@@ -1,0 +1,21 @@
+INSERT INTO users (DOCUMENT_TYPE, DOCUMENT_NUMBER, NAME, LASTNAME, EMAIL) VALUES ('CC',1000000530,'Pepito1','Perez','pepito1@correo.com');
+INSERT INTO users (DOCUMENT_TYPE, DOCUMENT_NUMBER, NAME, LASTNAME, EMAIL) VALUES ('CC',1000000450,'Pepito2','Perez','pepito2@correo.com');
+INSERT INTO users (DOCUMENT_TYPE, DOCUMENT_NUMBER, NAME, LASTNAME, EMAIL) VALUES ('CC',1000002360,'Pepito3','Perez','pepito3@correo.com');
+INSERT INTO users (DOCUMENT_TYPE, DOCUMENT_NUMBER, NAME, LASTNAME, EMAIL) VALUES ('CC',1006700000,'Pepito4','Perez','pepito4@correo.com');
+INSERT INTO users (DOCUMENT_TYPE, DOCUMENT_NUMBER, NAME, LASTNAME, EMAIL) VALUES ('CC',1000000200,'Pepito5','Perez','pepito5@correo.com');
+INSERT INTO users (DOCUMENT_TYPE, DOCUMENT_NUMBER, NAME, LASTNAME, EMAIL) VALUES ('CC',1010700000,'Pepito6','Perez','pepito6@correo.com');
+INSERT INTO users (DOCUMENT_TYPE, DOCUMENT_NUMBER, NAME, LASTNAME, EMAIL) VALUES ('CC',1678070000,'Pepito7','Perez','pepito7@correo.com');
+INSERT INTO users (DOCUMENT_TYPE, DOCUMENT_NUMBER, NAME, LASTNAME, EMAIL) VALUES ('CC',1002350000,'Pepito8','Perez','pepito8@correo.com');
+INSERT INTO users (DOCUMENT_TYPE, DOCUMENT_NUMBER, NAME, LASTNAME, EMAIL) VALUES ('CC',1098650000,'Pepito9','Perez','pepito9@correo.com');
+INSERT INTO users (DOCUMENT_TYPE, DOCUMENT_NUMBER, NAME, LASTNAME, EMAIL) VALUES ('CC',1000324500,'Pepito10','Perez','pepito10@correo.com');
+
+INSERT INTO book VALUES (1,'Libro1','Autor1','Thriller','B', 1);
+INSERT INTO book VALUES (2,'Libro2','Autor2','SciFi','U', 5);
+INSERT INTO book VALUES (3,'Libro3','Autor3','Comedy','B', 1);
+INSERT INTO book VALUES (4,'Libro4','Autor4','SciFi','U', 5);
+INSERT INTO book VALUES (5,'Libro5','Autor5','Thriller','B', 1);
+INSERT INTO book VALUES (6,'Libro6','Autor6','Novel','A', 8);
+INSERT INTO book VALUES (7,'Libro7','Autor7','Novel','U', 1);
+INSERT INTO book VALUES (8,'Libro8','Autor8','SciFi','A', 8);
+INSERT INTO book VALUES (9,'Libro9','Autor9','Thriller','A', 4);
+INSERT INTO book VALUES (10,'Libro10','Autor10','Thriller','A', 4);
