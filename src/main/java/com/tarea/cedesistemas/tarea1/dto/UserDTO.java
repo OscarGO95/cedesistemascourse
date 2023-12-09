@@ -3,8 +3,8 @@ package com.tarea.cedesistemas.tarea1.dto;
 import jakarta.validation.constraints.*;
 
 public record UserDTO(
-        @Pattern(regexp = "^[0-9a-fA-F]{8}\\b-[0-9a-fA-F]{4}\\b-[0-9a-fA-F]{4}\\b-[0-9a-fA-F]{4}\\b-[0-9a-fA-F]{12}$")
-        String userId,
+        @NotNull
+        Integer userId,
         @NotNull
         @NotBlank
         String documentType,

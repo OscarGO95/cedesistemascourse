@@ -7,6 +7,7 @@ import com.tarea.cedesistemas.tarea1.repository.BookRepository;
 import com.tarea.cedesistemas.tarea1.repository.UserRepository;
 import com.tarea.cedesistemas.tarea1.util.validation.Validation;
 import lombok.AllArgsConstructor;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.BodyInserter;
 import org.springframework.web.reactive.function.BodyInserters;
@@ -23,31 +24,35 @@ public class UserHandler {
     BookRepository bookRepository;
 
     public Mono<ServerResponse> create(ServerRequest request){
-        return validation.validate(UserDTO.class,request)
-                .map(userDTO -> bookRepository.findAll())
-                .flatMap(d->ServerResponse.ok().body(BodyInserters.fromPublisher(d, Book.class)));
-
-
-        /*return validation.validate(UserDTO.class, request)
+        return validation.validate(UserDTO.class, request)
                 .map(userDTO -> new User(null,userDTO.documentType(),userDTO.documentNumber(), userDTO.name(), userDTO.lastname(), userDTO.email()))
                 .flatMap(userRepository::save)
-                .flatMap(userDTO -> ServerResponse.ok().build());*/
+                .flatMap(user -> ServerResponse.ok().body(BodyInserters.fromValue(user)));
     }
 
     public Mono<ServerResponse> getById(ServerRequest request){
-        String id = request.pathVariable("id");
-        return null;
+        Integer id = Integer.parseInt(request.pathVariable("id"));
+        return userRepository.findById(id)
+                .flatMap(user -> ServerResponse.ok().body(BodyInserters.fromValue(user)))
+                .switchIfEmpty(ServerResponse.notFound().build());
     }
 
     public Mono<ServerResponse> getAll(ServerRequest request){
-        return null;
+        return userRepository.findAll()
+                .collectList()
+                .flatMap(users -> ServerResponse.ok().body(BodyInserters.fromValue(users)));
     }
 
     public Mono<ServerResponse> delete(ServerRequest request){
-        return null;
+        Integer id = Integer.parseInt(request.pathVariable("id"));
+        return userRepository.deleteById(id)
+                .then(ServerResponse.ok().build());
     }
 
     public Mono<ServerResponse> update(ServerRequest request){
-        return null;
+        return validation.validate(UserDTO.class, request)
+                .map(userDTO -> new User(userDTO.userId(),userDTO.documentType(),userDTO.documentNumber(), userDTO.name(), userDTO.lastname(), userDTO.email()))
+                .flatMap(userRepository::save)
+                .flatMap(user -> ServerResponse.ok().body(BodyInserters.fromValue(user)));
     }
 }
