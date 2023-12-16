@@ -12,14 +12,15 @@ import java.util.UUID;
 @Data
 @AllArgsConstructor
 @Table("review")
-public class Review {
+public class Review implements Something{
     @Id
     private Integer reviewId;
     private String text;
     private Double score;
     @MappedCollection(idColumn = "userId")
-    @Column("USER_ID")
-    private User user;
-    @MappedCollection(idColumn = "bookId")
-    private Book book;
+
+    @Override
+    public String doSomething() {
+        return this.text + " - " +this.text;
+    }
 }

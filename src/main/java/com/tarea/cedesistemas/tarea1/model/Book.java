@@ -12,12 +12,17 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table("book")
-public class Book implements Serializable {
+public class Book implements Serializable,Something {
     @Id
     private Integer bookId;
     private String title;
     private String author;
     private String genre;
     private String state;
-    private User user;
+    private Integer userId;
+
+    @Override
+    public String doSomething() {
+        return this.title + " - " + this.author + " - " + this.genre;
+    }
 }

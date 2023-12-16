@@ -11,13 +11,16 @@ import java.util.UUID;
 @Data
 @AllArgsConstructor
 @Table("exchange_request")
-public class ExchangeRequest {
+public class ExchangeRequest implements Something {
     @Id
     private Integer exchangeId;
     private String state;
     @MappedCollection(idColumn = "userId")
-    @Column("USER_ID")
-    private User user;
-    @MappedCollection(idColumn = "bookId")
-    private Book book;
+    private Integer userId;
+    private Integer bookId;
+
+    @Override
+    public String doSomething() {
+        return this.state + " - " + userId;
+    }
 }

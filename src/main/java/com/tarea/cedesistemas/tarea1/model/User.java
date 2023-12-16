@@ -12,7 +12,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table("users")
-public class User implements Serializable {
+public class User implements Serializable, Something  {
     @Id
     private Integer userId;
     private String documentType;
@@ -20,8 +20,9 @@ public class User implements Serializable {
     private String name;
     private String lastname;
     private String email;
-    /*@Transient
-    @OneToMany(targetEntity = Book.class)
-    @JoinColumn(name = "USER_ID")
-    private List<Book> books = new ArrayList<>();*/
+
+    @Override
+    public String doSomething() {
+        return this.documentType + " - " + this.documentNumber + " - " + this.name + " - " + this.lastname;
+    }
 }

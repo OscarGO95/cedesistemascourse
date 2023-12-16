@@ -21,7 +21,6 @@ public class UserHandler {
 
     Validation validation;
     UserRepository userRepository;
-    BookRepository bookRepository;
 
     public Mono<ServerResponse> create(ServerRequest request){
         return validation.validate(UserDTO.class, request)
@@ -40,7 +39,8 @@ public class UserHandler {
     public Mono<ServerResponse> getAll(ServerRequest request){
         return userRepository.findAll()
                 .collectList()
-                .flatMap(users -> ServerResponse.ok().body(BodyInserters.fromValue(users)));
+                .flatMap(users -> ServerResponse.ok().body(BodyInserters.fromValue(users)))
+                .switchIfEmpty(ServerResponse.notFound().build());
     }
 
     public Mono<ServerResponse> delete(ServerRequest request){
